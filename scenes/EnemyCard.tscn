@@ -1,0 +1,139 @@
+[gd_scene load_steps=8 format=3 uid="uid://dgsklb1i5rri"]
+
+[ext_resource type="Script" uid="uid://dvq4khlvhdn4k" path="res://Scripts/card.gd" id="1_yu458"]
+[ext_resource type="Texture2D" uid="uid://b1iey78ai4ppq" path="res://Assets/Deck.png" id="2_duhuw"]
+[ext_resource type="Texture2D" uid="uid://cb0huvyo0pmhc" path="res://Assets/SpadeA.png" id="3_7tlul"]
+[ext_resource type="Texture2D" uid="uid://di0mvkkvd6h03" path="res://Assets/card_shadow.png" id="4_g3npf"]
+
+[sub_resource type="Animation" id="Animation_4dx8l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CardBackImage:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CardBackImage:z_index")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CardImage:z_index")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CardImage:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_qf083"]
+resource_name = "card_flip"
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CardBackImage:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.1, 1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CardBackImage:z_index")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, -1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CardImage:z_index")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [-1, 0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CardImage:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.1, 1), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_40ytf"]
+_data = {
+&"RESET": SubResource("Animation_4dx8l"),
+&"card_flip": SubResource("Animation_qf083")
+}
+
+[node name="Card" type="Node2D"]
+texture_filter = 1
+position = Vector2(100, 960)
+script = ExtResource("1_yu458")
+
+[node name="CardBackImage" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_duhuw")
+
+[node name="CardImage" type="Sprite2D" parent="."]
+z_index = -1
+texture_filter = 1
+texture = ExtResource("3_7tlul")
+
+[node name="CardShadow" type="Sprite2D" parent="."]
+z_index = -1
+texture = ExtResource("4_g3npf")
+offset = Vector2(3, -3)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_40ytf")
+}

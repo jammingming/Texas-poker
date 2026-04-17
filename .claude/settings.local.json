@@ -1,0 +1,38 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(claude mcp:*)",
+      "Bash(ls:*)",
+      "Bash(npx:*)",
+      "Bash(echo:*)",
+      "Bash(node ./build/index.js --help)",
+      "Read(//c/Program Files \\(x86\\)/app/Godot_v4.5.1-stable_win64.exe/godot-mcp-main/**)",
+      "Bash(GODOT_PATH=\"C:/Program Files \\(x86\\)/app/Godot_v4.5.1-stable_win64.exe/Godot_v4.5.1-stable_win64.exe\" DEBUG=true node ./build/index.js --help)",
+      "Bash(godot:*)",
+      "Bash(where godot:*)",
+      "Bash(\"C:/Program Files \\(x86\\)/app/Godot_v4.5.1-stable_win64.exe/Godot_v4.5.1-stable_win64.exe\" --path \"C:/Users/20673/Documents/texas-poker\")",
+      "Bash(\"C:/Program Files \\(x86\\)/app/Godot_v4.5.1-stable_win64.exe/Godot_v4.5.1-stable_win64.exe\" --path \"C:/Users/20673/Documents/texas-poker\" --quit-after 5)",
+      "mcp__godot__get_project_info",
+      "mcp__godot__run_project",
+      "mcp__godot__get_debug_output",
+      "mcp__godot__stop_project"
+    ]
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "godot"
+  ],
+  "enabledPlugins": {},
+  "mcpServers": {
+    "godot": {
+      "command": "node",
+      "args": [
+        "C:/Program Files (x86)/app/Godot_v4.5.1-stable_win64.exe/godot-mcp-main/build/index.js"
+      ],
+      "env": {
+        "GODOT_PATH": "C:/Program Files (x86)/app/Godot_v4.5.1-stable_win64.exe/Godot_v4.5.1-stable_win64.exe",
+        "DEBUG": "true"
+      }
+    }
+  }
+}

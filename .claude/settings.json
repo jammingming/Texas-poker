@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(claude mcp:*)",
+      "Bash(ls:*)",
+      "Bash(npx:*)",
+      "Bash(echo:*)",
+      "Bash(node ./build/index.js --help)"
+    ]
+  },
+  "enabledPlugins": {
+    "gdscript-lsp@claude-plugins-official": true
+  },
+  "env": {
+    "PATH": "C:\\Users\\20673\\.claude\\plugins\\marketplaces\\claude-plugins-official\\plugins\\gdscript-lsp"
+  }
+}

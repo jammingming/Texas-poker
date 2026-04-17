@@ -1,0 +1,74 @@
+[gd_scene load_steps=9 format=3 uid="uid://dsdmcpws64jtw"]
+
+[ext_resource type="Script" uid="uid://k65d061knvqw" path="res://Scripts/CardManager.gd" id="1_0xm2m"]
+[ext_resource type="Script" uid="uid://bhqg7ol381vvk" path="res://Scripts/player_hand.gd" id="3_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://canvakm2m5qle" path="res://scenes/card_slot.tscn" id="3_h2yge"]
+[ext_resource type="Texture2D" uid="uid://b1iey78ai4ppq" path="res://Assets/Deck.png" id="4_jyhfs"]
+[ext_resource type="Script" uid="uid://cx0fiwvi25uxx" path="res://Scripts/deck.gd" id="4_tefeu"]
+[ext_resource type="Script" uid="uid://b36nobymsbl1y" path="res://Scripts/input_manager.gd" id="6_o6xl0"]
+[ext_resource type="Script" uid="uid://e64s3dtn3qri" path="res://Scripts/RoundManager.gd" id="8_round"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
+size = Vector2(82, 122)
+
+[node name="Main" type="Node2D"]
+
+[node name="CardManager" type="Node2D" parent="."]
+script = ExtResource("1_0xm2m")
+
+[node name="CardSlots" type="Node2D" parent="."]
+
+[node name="CardSlot" parent="CardSlots" instance=ExtResource("3_h2yge")]
+position = Vector2(600, 570)
+
+[node name="CardSlot2" parent="CardSlots" instance=ExtResource("3_h2yge")]
+position = Vector2(780, 570)
+
+[node name="CardSlot3" parent="CardSlots" instance=ExtResource("3_h2yge")]
+position = Vector2(960, 570)
+
+[node name="CardSlot4" parent="CardSlots" instance=ExtResource("3_h2yge")]
+position = Vector2(1140, 570)
+
+[node name="CardSlot5" parent="CardSlots" instance=ExtResource("3_h2yge")]
+position = Vector2(1320, 570)
+
+[node name="PlayerHand" type="Node2D" parent="."]
+script = ExtResource("3_1bvp3")
+
+[node name="Deck" type="Node2D" parent="."]
+position = Vector2(100, 960)
+script = ExtResource("4_tefeu")
+
+[node name="Sprite2D" type="Sprite2D" parent="Deck"]
+z_index = -1
+texture = ExtResource("4_jyhfs")
+
+[node name="Area2D" type="Area2D" parent="Deck"]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Deck/Area2D"]
+shape = SubResource("RectangleShape2D_h2yge")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Deck"]
+modulate = Color(0, 0, 0, 1)
+z_index = -1
+offset_left = 23.0
+offset_top = 34.0
+offset_right = 63.0
+offset_bottom = 74.0
+text = "0"
+
+[node name="InputManager" type="Node2D" parent="."]
+script = ExtResource("6_o6xl0")
+
+[node name="EndRoundButton" type="Button" parent="."]
+offset_left = 1600.0
+offset_top = 800.0
+offset_right = 1700.0
+offset_bottom = 840.0
+text = "End Round"
+
+[node name="RoundManager" type="Node2D" parent="."]
+script = ExtResource("8_round")

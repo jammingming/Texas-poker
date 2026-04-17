@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://do1nl214l4fe0"]
+
+[ext_resource type="Texture2D" uid="uid://q00eqlsssyyj" path="res://Assets/OptionButton.png" id="2_232f3"]
+[ext_resource type="Script" uid="uid://cn5ixomx0wq4" path="res://Scripts/OptionButton.gd" id="2_tzoc7"]
+[ext_resource type="AudioStream" uid="uid://clsptsb6jcbso" path="res://Assets/Sound effects/Spark_Sound.wav" id="3_o45vx"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_o45vx"]
+points = PackedVector2Array(85, -12, 85, 30, -80, 57, -100, -40)
+
+[node name="OptionButton" type="Node2D"]
+position = Vector2(100, 100)
+scale = Vector2(1, 0.5)
+script = ExtResource("2_tzoc7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-10, 20)
+scale = Vector2(3, 3)
+texture = ExtResource("2_232f3")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("ConvexPolygonShape2D_o45vx")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 34.0
+offset_bottom = 10.0
+scale = Vector2(1, 1.5)
+text = "结束回合"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Entered" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_o45vx")
+volume_db = -20.0
+pitch_scale = 0.6
+
+[node name="Selected" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_o45vx")
+volume_db = -20.0
+pitch_scale = 0.8
