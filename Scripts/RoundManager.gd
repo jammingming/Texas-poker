@@ -55,10 +55,12 @@ func calculate_enemy_positions(enemy_number: int, i: int) -> Array:
 		4: top_count = 2; left_count = 2
 		5: top_count = 2; left_count = 3
 		6: top_count = 3; left_count = 3
+		@warning_ignore("integer_division")
 		_: return [Vector2(SCREEN_WIDTH/2, TOP_MARGIN), 0]
 
 	# 顶部均匀排列（修复语法后）
 	if i < top_count:
+		@warning_ignore("integer_division")
 		var start_x = SCREEN_WIDTH/2 - (top_count - 1) * SPACING / 2
 		var x = start_x + i * SPACING
 		return [Vector2(x, TOP_MARGIN_), 0]
@@ -68,6 +70,7 @@ func calculate_enemy_positions(enemy_number: int, i: int) -> Array:
 		var total_height = SCREEN_HEIGHT - TOP_MARGIN*2
 		# 防止除以0（核心语法/逻辑修复）
 		var divisor = max(left_count - 1, 1)
+		@warning_ignore("integer_division")
 		var y = TOP_MARGIN/2 + left_index * total_height / divisor
 		return [Vector2(LEFT_MARGIN, y), 1]
 
